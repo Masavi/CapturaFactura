@@ -2,7 +2,7 @@
   "name": "captura-factura",
   "version": "1.0.0",
   "description": "Aplicación de escritorio para la captura automática de datos de facturas en formato xml",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
