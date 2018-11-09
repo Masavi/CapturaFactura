@@ -1,29 +1,62 @@
-// read a CSV file
-var csvParser = new SimpleExcel.Parser.CSV();
-var fileInput = document.getElementById('fileInput');
+console.log(`Here's the main logic`);
 
-// parse when file loaded, then print the result to console
-fileInput.addEventListener('change', function (e) {
-    var file = e.target.files[0];
-    csvParser.loadFile(file, function () {
-        console.log(csvParser.getSheet()); // print!
-    });
-});
+function procesarArchivos(){
 
-// write an XLSX file            
-var xlsxWriter = new SimpleExcel.Writer.XLSX();
-var xlsxSheet = new SimpleExcel.Sheet();
-var Cell = SimpleExcel.Cell;
-xlsxSheet.setRecord([
-    [new Cell('ID', 'TEXT'), new Cell('Nama', 'TEXT'), new Cell('Kode Wilayah', 'TEXT')],
-    [new Cell(1, 'NUMBER'), new Cell('Kab. Bogor', 'TEXT'), new Cell(1, 'NUMBER')],
-    [new Cell(2, 'NUMBER'), new Cell('Kab. Cianjur', 'TEXT'), new Cell(1, 'NUMBER')],
-    [new Cell(3, 'NUMBER'), new Cell('Kab. Sukabumi', 'TEXT'), new Cell(1, 'NUMBER')],
-    [new Cell(4, 'NUMBER'), new Cell('Kab. Tasikmalaya', 'TEXT'), new Cell(2, 'NUMBER')]
-]);
-xlsxWriter.insertSheet(xlsxSheet);
+    // Archivos recibidos desde el input
+    let inputFiles = document.getElementById("myFile");
+    let txt = "";
 
-// export when button clicked
-document.getElementById('fileExport').addEventListener('click', function () {
-    xlsxWriter.saveFile(); // pop! ("Save As" dialog appears)
-});
+    if ('files' in inputFiles) {
+        if (inputFiles.files.length == 0) {
+            txt = "Selecciona uno o más archivos.";
+        } else {
+            for (let i=0; i<inputFiles.files.length; i++) 
+            {
+                txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+                var file = inputFiles.files[i];
+                if ('name' in file) {
+                    txt += "name: " + file.name + "<br>";
+                }
+                if ('size' in file) {
+                    txt += "size: " + file.size + " bytes <br>";
+                }
+            }
+        }
+    } 
+    else {
+        if (inputFiles.value == "") {
+            txt += "Select one or more files.";
+        } else {
+            txt += "The files property is not supported by your browser!";
+            txt  += "<br>The path of the selected file: " + inputFiles.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+        }
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+
+var fileChooser = document.getElementById('myFile');
+
+function parseTextAsXml(text) {
+    var parser = new DOMParser(),
+        xmlDom = parser.parseFromString(text, "text/xml");
+
+    //now, extract items from xmlDom and assign to appropriate text input fields
+}
+
+function waitForTextReadComplete(reader) {
+    reader.onloadend = function(event) {
+        var text = event.target.result;
+
+        parseTextAsXml(text);
+    }
+}
+
+function handleFileSelection() {
+    var file = fileChooser.files[0],
+        reader = new FileReader();
+
+    waitForTextReadComplete(reader);
+    reader.readAsText(file);
+}
+
+fileChooser.addEventListener('change', handleFileSelection, false);

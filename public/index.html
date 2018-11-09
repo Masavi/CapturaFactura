@@ -2,14 +2,25 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
     <title>Hello World!</title>
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    <input type="file" id="fileInput" /><br/>
-    <input type="button" id="fileExport" />
+
+  <body onload="procesarArchivos()">
+
+    <div class="container">
+      <h1>Factura</h1>
+      <p>Lorem ipsum dolor amet irquis</p>
+
+      <!-- Selección de archivos a recibir -->
+      <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
+      <!-- Target de contenido para myFunction() -->
+      <p id="demo"></p>
+    </div>
+
   </body>
 </html>
+
+
+<body >
+
