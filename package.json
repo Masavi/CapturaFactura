@@ -1,26 +1,24 @@
 {
-  "name": "captura-factura",
-  "version": "1.0.0",
-  "description": "Aplicación de escritorio para la captura automática de datos de facturas en formato xml",
+  "name": "factura-excel-backend",
+  "version": "0.0.1",
+  "description": "Captura automática en excel de facturas en formato xml",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Masavi/CapturaFactura.git"
+    "url": "git+https://github.com/Masavi/factura-excel-backend.git"
   },
   "keywords": [
-    "Factura"
+    "excel",
+    "factura",
+    "xml"
   ],
   "author": "Mauricio Saavedra",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Masavi/CapturaFactura/issues"
+    "url": "https://github.com/Masavi/factura-excel-backend/issues"
   },
-  "homepage": "https://github.com/Masavi/CapturaFactura#readme",
-  "devDependencies": {
-    "electron": "^3.0.8"
-  }
+  "homepage": "https://github.com/Masavi/factura-excel-backend#readme"
 }
